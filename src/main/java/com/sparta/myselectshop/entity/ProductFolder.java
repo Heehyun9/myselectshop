@@ -15,7 +15,7 @@ public class ProductFolder {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)  //lazy = 필요할 때 조회
+    @ManyToOne(fetch = FetchType.LAZY)  //lazy = 필요할 때 조회 --> 영속성 컨텍스트 필요 -> 해당 메서드에 @Transactional필요
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 

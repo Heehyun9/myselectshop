@@ -1,8 +1,14 @@
 package com.sparta.myselectshop.repository;
 
 import com.sparta.myselectshop.entity.Folder;
+import com.sparta.myselectshop.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface FolderRepository extends JpaRepository <Folder, Long>{
+import java.util.List;
 
+public interface FolderRepository extends JpaRepository <Folder, Long>{
+    // findAllByUserAndNameIn = select * from folder by where user_id = ? and name in (? , ?, ?);
+    List<Folder> findAllByUserAndNameIn(User user, List<String> folderNames);
+
+    List<Folder> findAllByUser(User user);
 }
